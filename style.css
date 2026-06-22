@@ -1,0 +1,342 @@
+* {
+  box-sizing: border-box;
+}
+
+header {
+  position: relative;
+  background-color: #7b9cf0;
+  padding: 20px;
+  text-align: center; 
+  h1 {
+    color: #622D89;
+    margin: 0;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+  }
+}
+
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 80px;
+  height: 80px;
+  max-width: 15%;
+}
+
+.menu-checkbox {
+  display: none;
+}
+
+.menu-btn {
+  display: none;
+  position: absolute;
+  top: 22px;
+  right: 20px;
+  width: 32px;
+  height: 24px;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.menu-btn span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #622D89;
+  border-radius: 2px;
+  margin: 5px 0;
+  transition: transform .3s ease, opacity .3s ease;
+}
+
+.menu-checkbox:checked + .menu-btn span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-checkbox:checked + .menu-btn span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-checkbox:checked + .menu-btn span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+nav.menu {
+  display: block;
+}
+
+body {
+  font-family: cursive;
+  margin: 0;
+  background-color: #961C65;
+  color: #622D89;
+  font-size: clamp(14px, 2vw, 16px);
+}
+
+h1, h2 {
+  margin-top: 0;
+}
+
+.contenedor {
+  width: 90%;
+  max-width: 1000px;
+  margin: 20px auto;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  h1, h2 {
+    text-align: center;
+  }
+}
+
+/* Navegación con Flexbox - Responsive */
+nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 0 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #622D89;
+  background-color: #3559b3;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: 0.3s;
+  display: inline-block;
+  font-size: clamp(12px, 1.5vw, 16px);
+}
+
+/* Hover en enlaces */
+nav ul li a:hover {
+  background-color: #abf3a4;
+}
+
+/* Tabla - Responsive */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+table th,
+table td {
+  border: 1px solid #202020;
+  padding: 10px;
+  text-align: center;
+  font-size: clamp(12px, 1.5vw, 14px);
+}
+
+table th {
+  background-color: #d6b68b;
+}
+
+table img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Tarjeta de producto */
+.card-producto {
+  img {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 100%;
+    height: auto;
+  }
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  background-color: fafafa;
+}
+
+footer {
+  display: block;
+  margin-top: 30px;
+  padding: 20px;
+  text-align: center;
+  color: black;
+  background-color: #7b9cf0;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablets (768px y menos) */
+@media (max-width: 768px) {
+  header {
+    padding: 15px;
+  }
+
+  .logo {
+    width: 60px;
+    height: 60px;
+    top: 15px;
+    left: 15px;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  nav.menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    background-color: #7b9cf0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    z-index: 9;
+  }
+
+  .menu-checkbox:checked + .menu-btn + nav.menu {
+    display: block;
+  }
+
+  nav.menu ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  nav.menu ul li {
+    width: 100%;
+  }
+
+  nav.menu ul li a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .contenedor {
+    width: 95%;
+    margin: 15px auto;
+    padding: 15px;
+  }
+
+  nav ul {
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  nav ul li a {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  table th,
+  table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  table img {
+    max-width: 150px;
+    height: auto;
+  }
+}
+
+/* Móviles (480px y menos) */
+@media (max-width: 480px) {
+  header {
+    padding: 10px;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    margin-top: 50px;
+  }
+
+  .logo {
+    width: 50px;
+    height: 50px;
+    top: 10px;
+    left: 10px;
+  }
+
+  .contenedor {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 0;
+  }
+
+  /* Tabla scrolleable en móviles */
+  table {
+    font-size: 11px;
+  }
+
+  table th,
+  table td {
+    padding: 6px;
+    font-size: 11px;
+  }
+
+  table img {
+    max-width: 100px;
+    height: auto;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  nav ul li {
+    width: 100%;
+  }
+
+  nav ul li a {
+    width: 100%;
+    text-align: center;
+  }
+
+  footer {
+    padding: 15px;
+  }
+}
+/* Formulario */
+.seccion-contacto {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.formulario label { font-weight: bold; }
+
+.formulario input,
+.formulario textarea,
+.formulario select {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: var(--color-blanco);
+    transition: border-color 0.25s;
+}
+
+.formulario input:focus,
+.formulario textarea:focus,
+.formulario select:focus {
+    border-color: var(--color-dorado);
+    outline: none;
+}
+
+/* Mensajes de envío */
+.oculto { display: none; }
+.mensaje-ok { color: #2b8a3e; margin-top: 10px; }
+.mensaje-error { color: #b30000; margin-top: 10px; }

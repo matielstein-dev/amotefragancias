@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Textiles</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="imagenes/textil destacado.jpeg">
+  <style>
+    #adminPanel {
+      display: none;
+      background-color: #fff3cd;
+      border: 2px solid #ff6b6b;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+      text-align: center;
+    }
+    
+    #adminPanel button {
+      background-color: #3559b3;
+      color: #622D89;
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    #adminPanel button:hover {
+      background-color: #c92a2a;
+    }
+    
+    .admin-badge {
+      display: inline-block;
+      background-color: #3559b3;
+      color: #622D89;
+      padding: 5px 10px;
+      border-radius: 3px;
+      margin-left: 10px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+     <header>
+      
+        <img src="imagenes/WhatsApp Image 2026-05-21 at 18.14.50.jpeg" class="logo"> 
+        <h1>Textiles <span id="adminBadge"></span></h1>
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="menu-btn" aria-label="Mostrar menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+    <nav class="menu">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="textiles.html">Textiles</a></li>
+        <li><a href="difosores.html">Difusores</a></li>
+        <li><a href="aerosoles.html">Aerosoles</a></li>         
+        <li><a href="contacto.html">Contacto</a></li>
+        <li style="float:right; margin-right: 20px;">
+          <button id="adminBtn" onclick="loginAdmin()" style="background-color: #3559b3; color:#622D89; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer;">Admin</button>
+          <button id="logoutBtn" onclick="logoutAdmin()" style="background-color: #3559b3; color: #622D89; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; display: none;">Logout</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="contenedor">
+    <div id="adminPanel">
+      <h3>🔧 Panel de Administración</h3>
+      <p>Haz clic en cualquier celda para editar. Los cambios se guardan automáticamente.</p>
+      <button onclick="addTableRow()">+ Agregar Fila</button>
+      <button onclick="deleteTableRow()">🗑️ Eliminar Última Fila</button>
+      <button onclick="alert('Los datos se guardan automáticamente en el navegador')">💾 Estado: Guardado</button>
+    </div>
+
+    <section>
+      <h2>Listado de textiles</h2>
+      <p>
+        A continuación se muestra los textiles que tenemos en stock.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Textil</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Imagen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rocio</td>
+            <td>$3.250 </td>
+            <td>5</td>
+            <td><img src="imagenes/textil destacado.jpeg" style="max-width: 100%; height: auto; width: 200px;" alt="Textil Rocio"></td>
+          </tr>
+          <tr>
+            <td>Bubblegum</td>
+            <td>$3.260</td>
+            <td>12</td>
+            <td><img src="imagenes/textil bubblegum.jpeg" style="max-width: 100%; height: auto; width: 200px;" alt="Bubblegum"></td>
+          </tr>
+          <tr>
+            <td>Uva</td>
+            <td>$3.250</td>
+            <td>8</td>
+            <td><img src="imagenes/textil uva.jpeg" style="max-width: 100%; height: auto; width: 200px;" alt="Uva"></td>
+          </tr>
+          <tr>
+            <td>Papaya</td>
+              <td>$3.750</td>
+              <td>4</td>
+              <td><img src="imagenes/textil papaya.jpeg" style="max-width: 100%; height: auto; width: 200px;" alt="Papaya"></td>
+            </tr>
+            <tr>
+            <td>Hawai</td>
+            <td>$4.000</td>
+            <td>8</td>
+            <td><img src="imagenes/textil hawai.jpeg" style="max-width: 100%; height: auto; width: 200px;" alt="Hawai"></td>
+          </tr>
+            
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card-producto">
+      <h2>Textil destacado</h2>
+      <img src="imagenes/textil destacado.jpeg" style="max-width: 100%; height: auto; width: 300px;" alt="Textil destacado">
+      
+    </section>
+  </main>
+
+  <footer>
+     <h1>Proyecto Final de Matias Elstein</h1>
+  </footer>
+
+  <script src="admin.js"></script>
+  <script>
+    // Actualizar botones según estado de login
+    function updateAdminUI() {
+      const adminBtn = document.getElementById("adminBtn");
+      const logoutBtn = document.getElementById("logoutBtn");
+      const adminBadge = document.getElementById("adminBadge");
+      
+      if (isAdmin()) {
+        adminBtn.style.display = "none";
+        logoutBtn.style.display = "inline-block";
+        adminBadge.innerHTML = '<span class="admin-badge">ADMIN</span>';
+      } else {
+        adminBtn.style.display = "inline-block";
+        logoutBtn.style.display = "none";
+        adminBadge.innerHTML = '';
+      }
+    }
+    
+    document.addEventListener("DOMContentLoaded", updateAdminUI);
+  </script>
+</body>
+</html>
+
+
